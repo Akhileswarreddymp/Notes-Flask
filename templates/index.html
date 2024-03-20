@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block body %}
+
+
+<div class="container">
+    <form action="/" method="post">
+        <h1>Add a Note</h1>
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="desc" class="form-label">Description</label>
+            <input type="text" class="form-control" id="desc" name="desc">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <h2 class="my-3">Your Todo Works</h2>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">SNo</th>
+            <th scope="col">Title</th>
+            <th scope="col">Description</th>
+            <th scope="col">Created Time</th>
+          </tr>
+        </thead>
+        {% for note in data %}
+        <tbody>
+            <tr>
+              <th scope="row">{{loop.index}}</th>
+              <td>{{note.title}}</td>
+              <td>{{note.description}}</td>
+              <td>{{note.created_time}}</td>
+              <td>
+                <a href="/update/{{note.sno}}" type="button" class="btn btn-dark btn-sm">Update</a>
+                <a href="/delete/{{note.sno}}" type="button" class="btn btn-dark btn-sm">Delete</a>
+              </td>
+              
+            </tr>
+          </tbody>
+        {% endfor %}
+        
+      </table>
+</div>
+
+{% endblock body %}
