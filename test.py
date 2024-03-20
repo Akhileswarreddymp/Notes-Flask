@@ -24,7 +24,7 @@ def index():
         db.session.add(new_note)
         db.session.commit()
     data = Note().query.all()
-    print(data)
+    print(data) 
     return render_template('index.html',data=data)
 
 
